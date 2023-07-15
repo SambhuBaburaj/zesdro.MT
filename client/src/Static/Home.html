@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nike Landing Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Nike</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Discover the Latest</h2>
+      <h1>Nike Collection</h1>
+      <a href="#" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-item">
+      <img src="shoes1.jpg" alt="Shoes 1">
+      <h3>Comfortable Fit</h3>
+      <p>Our shoes are designed to provide maximum comfort for your feet.</p>
+    </div>
+    <div class="feature-item">
+      <img src="shoes2.jpg" alt="Shoes 2">
+      <h3>Stylish Designs</h3>
+      <p>Discover our wide range of stylish and trendy shoe designs.</p>
+    </div>
+    <div class="feature-item">
+      <img src="shoes3.jpg" alt="Shoes 3">
+      <h3>Durable Quality</h3>
+      <p>Our shoes are made with high-quality materials to ensure long-lasting durability.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Nike. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+  <script>
+    gsap.from("header", { opacity: 0, duration: 1, y: -50 });
+    gsap.from(".hero-content", { opacity: 0, duration: 1, delay: 1, y: -50 });
+    gsap.from(".btn", { opacity: 0, duration: 1, delay: 2, scale: 0.5 });
+    gsap.from(".feature-item", { opacity: 0, duration: 1, delay: 2.5, stagger: 0.5 });
+    gsap.from("footer", { opacity: 0, duration: 1, delay: 3, y: 50 });
+  </script>
+</body>
+</html>

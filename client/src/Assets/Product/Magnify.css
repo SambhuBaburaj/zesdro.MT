@@ -1,0 +1,20 @@
+.magnify-image {
+    position: relative;
+  }
+  
+  .magnify-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image: url('');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: none;
+  }
+  

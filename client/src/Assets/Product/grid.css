@@ -1,0 +1,9 @@
+.animated-element {
+    /* Your regular styles */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .move-element {
+    transform: translateX(100px); /* Adjust the desired movement */
+  }
+  
