@@ -14,14 +14,18 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const location = useLocation();
+  // const location = useLocation();
 
   const Addtocartitem = () => {
-    console.log(location.state);
+console.log(sessionStorage.getItem('myData'),'session data here');
+const location=JSON.parse(sessionStorage.getItem('myData'))
+console.log(JSON.parse(sessionStorage.getItem('myData')));
+sessionStorage.removeItem('myData')
+    // console.log(location.state);
     console.log("wokr");
-    if (location.state) {
+    if (location) {
       console.log("this is also working");
-      AddtoCart(location.state.Product).then((data) => {
+      AddtoCart(location).then((data) => {
         const fakeData = data.data;
      
         
@@ -32,6 +36,7 @@ const Cart = () => {
         
         setCartItems(fakeData);
         console.log("worked is ti", cartItems);
+
         setIsLoading(false);
       });
     } else {
@@ -55,7 +60,7 @@ else
 
   useEffect(() => {
     Addtocartitem();
-  }, []);
+  },[isLoading]);
 
 
 
@@ -65,8 +70,10 @@ else
     RemoveProduct(itemId).then(data=>{
       console.log(data);
     })
-    setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
 
+
+    setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
+console.log(setCartItems.length);
  
   };
 
@@ -119,11 +126,13 @@ else
             </div>
             <button className="px-4 py-2 text-sm text-white bg-red-500 rounded-lg focus:outline-none"></button>
           </div>
+          
         </>
       );
     }
 
     return cartItems.map((item) => (
+      <>
       <div
         key={item.id}
         className="flex items-center justify-between p-4 border-b"
@@ -163,7 +172,10 @@ else
         >
           Remove
         </button>
+        
       </div>
+   
+      </>
     ))
   };
 
@@ -173,13 +185,22 @@ else
       {cartItems? (
         <div className="bg-white rounded-lg shadow">
           {renderCartItems()}
-          <div className="p-4">
+
+
+          {
+
+
+          }{
+            calculateTotal(cartItems)!==0?  <div className="p-4">
             <h3 className="text-xl font-semibold mb-2">Total:</h3>
             <div className="w-32 h-6 mb-4">${calculateTotal(cartItems)} </div>
             <button className="px-4 py-2 text-sm text-white bg-green-500 rounded-lg focus:outline-none">
               Checkout
             </button>
-          </div>
+          </div>:<></>
+
+          }
+        
         </div>
       ) : (
         <p>Your cart is empty.</p>

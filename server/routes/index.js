@@ -9,7 +9,6 @@ const {
   RemoveProduct,
 } = require("../Controller/ProductControl");
 
-
 /* GET home page. */
 router.get("/getProducts", async function (req, res, next) {
   const Product = await MongoUser.ProductData.find();
@@ -23,3 +22,4 @@ router.get("/cartchange", cartChange);
 router.get("/removeitem", RemoveProduct);
 
 module.exports = router;
+   
